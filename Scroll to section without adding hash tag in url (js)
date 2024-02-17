@@ -1,0 +1,9 @@
+<a onclick="scrollToSection('service')" href="javascript:void()">Our services</a>
+<section class="service-section" id="service"></section>
+
+function scrollToSection(sectionId) {
+    var section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }

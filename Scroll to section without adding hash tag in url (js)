@@ -1,3 +1,4 @@
+//Scroll to section without adding hash link in url
 <a onclick="scrollToSection('service')" href="javascript:void()">Our services</a>
 <section class="service-section" id="service"></section>
 
@@ -7,3 +8,24 @@ function scrollToSection(sectionId) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+
+//Read More/read less
+
+<span class="mr-2 review-text" id="short_version{{ $comment->id }}">{{ Str::limit($comment->body, 80) }}</span>
+<span class="d-none mr-2 review-text" id="full_version{{ $comment->id }}">{{ $comment->body }}</span>
+
+function readMoreLess(id){
+ let shortVersionId = 'short_version'+id;
+ let fullVersionId = 'full_version'+id;
+ let readMore = 'read_more'+id;
+ if(document.getElementById(readMore).innerText === 'Read More'){
+   document.getElementById(shortVersionId).classList.add('d-none');
+   document.getElementById(fullVersionId).classList.remove('d-none');
+   document.getElementById(readMore).innerText = 'Read Less';
+   }else{
+    document.getElementById(shortVersionId).classList.remove('d-none');
+    document.getElementById(fullVersionId).classList.add('d-none');
+    document.getElementById(readMore).innerText = 'Read More';
+     }
+}
